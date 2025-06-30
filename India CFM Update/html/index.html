@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India's Carbon Footprint Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/chart.js"></script>
+    <script src="../js/active-nav.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>India's Carbon Footprint Manager</h1>
+        <div id="top-right-auth" style="position: absolute; top: 20px; right: 20px;">
+            <a href="login.html" style="
+                background-color: #00d1b2;
+                color: #0f2027 !important;
+                padding: 0.75rem 1.5rem;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: bold;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                display: inline-block;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            " onmouseover="this.style.backgroundColor='#00ffbf'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.4)';"
+                onmouseout="this.style.backgroundColor='#00d1b2'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.3)';">Login</a>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="controls">
+            <div id="state-selection">
+                <label for="state">Select State:</label>
+                <select id="state">
+                    <option value="">--Select a State--</option>
+                </select>
+            </div>
+
+            <div id="district-selection">
+                <label for="district">Select District:</label>
+                <select id="district">
+                    <option value="">--Select a District--</option>
+                </select>
+            </div>
+
+            <div id="vehicle-selection">
+                <label for="vehicle">Select Vehicle:</label>
+                <select id="vehicle">
+                    <option value="">--Select a Vehicle--</option>
+                    <option value="bike">Bike</option>
+                    <option value="car">Car</option>
+                    <option value="truck">Truck</option>
+                    <option value="bus">Bus</option>
+                    <option value="cycle">Cycle</option>
+                    <option value="walking">Walking</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="emissionChart"></canvas>
+        </div>
+
+        <section>
+            <h2>CO2 Emissions by State and District</h2>
+            <p id="state-district-emission">Average CO2 Emission: <span id="emission-value">0</span> tons/year</p>
+        </section>
+
+        <section>
+            <h2>CO2 Emissions by Vehicle</h2>
+            <p id="vehicle-emission">Average CO2 Emission: <span id="vehicle-emission-value">0</span> kg/km</p>
+        </section>
+    </main>
+    <br>
+    <footer>
+        <p>&copy; 2024 India CO2 Emissions & Carbon Footprint Manager</p>
+    </footer>
+
+</body>
+
+</html>

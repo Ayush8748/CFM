@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login History</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .history-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+
+        .history-container h2 {
+            color: #00d1b2;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .history-table th,
+        .history-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        .history-table th {
+            color: #00d1b2;
+            font-weight: bold;
+        }
+
+        .history-table tbody tr:nth-child(odd) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .history-table td {
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>India's Carbon Footprint Manager</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="history-container">
+        <h2>Login History</h2>
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // Function to load login history from localStorage
+        function loadLoginHistory() {
+            const historyJSON = localStorage.getItem('login_history');
+            return historyJSON ? JSON.parse(historyJSON) : [];
+        }
+
+        // Function to display login history in the table
+        document.addEventListener('DOMContentLoaded', () => {
+            const historyTableBody = document.querySelector('.history-table tbody');
+            if (historyTableBody) {
+                const loginHistory = loadLoginHistory();
+                historyTableBody.innerHTML = ''; // Clear existing rows
+
+                if (loginHistory.length === 0) {
+                    const noHistoryRow = document.createElement('tr');
+                    noHistoryRow.innerHTML = `<td colspan="2" style="text-align: center; color: #aaa;">No login history available.</td>`;
+                    historyTableBody.appendChild(noHistoryRow);
+                } else {
+                    loginHistory.forEach(entry => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${entry.timestamp}</td>
+                            <td>${entry.username}</td>
+                            `;
+                        historyTableBody.appendChild(row);
+                    });
+                }
+            }
+        });
+    </script>
+    <script src="../js/active-nav.js"></script>
+</body>
+
+</html>

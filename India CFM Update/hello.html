@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Ensure html and body take full height for proper centering */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Specific styles for the hello page */
+        body {
+            display: flex;
+            flex-direction: column;
+            /* Arrange children vertically */
+            justify-content: center;
+            /* Center content vertically */
+            align-items: center;
+            /* Center content horizontally */
+            /* New greenish gradient background */
+            background: linear-gradient(to bottom right, #1A4D2E, #4CAF50);
+            /* Darker forest green to a standard green */
+            overflow: hidden;
+            /* Hide overflow from falling leaves */
+        }
+
+        .hello-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2.5rem;
+            /* Slightly more padding */
+            background-color: rgba(0, 0, 0, 0.3);
+            /* Slightly transparent dark overlay for contrast */
+            border-radius: 16px;
+            max-width: 650px;
+            /* Slightly wider container */
+            width: 90%;
+            /* Make it responsive */
+            box-sizing: border-box;
+            /* Include padding in width calculation */
+            margin: auto;
+            /* Ensures it's centered if flex properties don't fully apply */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+            /* Stronger shadow */
+            position: relative;
+            /* Needed for z-index to keep leaves behind */
+            z-index: 1;
+            /* Ensure container is above leaves */
+        }
+
+        .hello-container h2 {
+            font-size: 3.8rem;
+            /* Slightly larger font */
+            color: #E0F2F1;
+            /* Light Cyan - for a fresh, clean look */
+            margin-bottom: 1rem;
+            /* Reduced margin to bring text closer */
+            animation: fadeInScale 1.5s ease-out forwards;
+            /* Apply animation */
+            opacity: 0;
+            /* Start invisible for animation */
+            line-height: 1.2;
+            /* Adjust line height for better appearance */
+        }
+
+        .hello-container p {
+            color: #B2DFDB;
+            /* Lighter Cyan - for good readability */
+            margin-bottom: 2.5rem;
+            /* More space below paragraph */
+            font-size: 1.3rem;
+            /* Slightly larger font for paragraph */
+            animation: fadeIn 2s ease-out forwards;
+            /* Apply fade-in animation */
+            animation-delay: 0.2s;
+            /* Delay paragraph animation */
+            opacity: 0;
+            /* Start invisible for animation */
+            max-width: 80%;
+            /* Constrain paragraph width */
+        }
+
+        .hello-button {
+            background-color: #26A69A;
+            /* Teal - a pleasing, slightly muted green-blue */
+            color: #0f2027;
+            /* Dark Blue-Grey - good contrast */
+            padding: 1.2rem 3rem;
+            /* Larger padding for button */
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3rem;
+            /* Larger font for button */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            /* Adjusted shadow */
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            animation: fadeIn 2s ease-out forwards;
+            /* Apply fade-in animation */
+            animation-delay: 0.5s;
+            /* Delay button animation */
+            opacity: 0;
+            /* Start invisible for animation */
+        }
+
+        .hello-button:hover {
+            background-color: #4DB6AC;
+            /* Lighter Teal - for a subtle glow */
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+            /* Enhanced hover shadow */
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Falling Leaves Styles */
+        .leaf-container {
+            position: fixed;
+            /* Use fixed to cover entire viewport regardless of scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            /* Allows clicks to pass through */
+            z-index: 0;
+            /* Keep leaves behind the content */
+            overflow: hidden;
+            /* Ensure leaves don't go beyond body */
+        }
+
+        .leaf {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #66BB6A;
+            /* Light Green - stands out against darker background */
+            border-radius: 50% 0;
+            /* Simple leaf shape */
+            transform-origin: bottom center;
+            animation: fall linear infinite, rotate ease-in-out infinite;
+            opacity: 0.7;
+            /* Slightly less opaque leaves */
+        }
+
+        /* Leaf specific animations */
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                /* Start with 0 rotation */
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                /* Fall and rotate more */
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hello-container h2 {
+                font-size: 2.8rem;
+            }
+
+            .hello-container p {
+                font-size: 1rem;
+            }
+
+            .hello-button {
+                padding: 1rem 2.5rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hello-container h2 {
+                font-size: 2.2rem;
+            }
+
+            .hello-container p {
+                font-size: 0.9rem;
+            }
+
+            .hello-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="leaf-container" id="leaf-container"></div>
+
+    <div class="hello-container">
+        <h2>Hey there! 😃</h2>
+        <p>Welcome to India's Carbon Footprint Manager.</p>
+        <a href="/html/index.html" class="hello-button">Enter Application</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const leafContainer = document.getElementById('leaf-container');
+            const numberOfLeaves = 100;
+
+            for (let i = 0; i < numberOfLeaves; i++) {
+                const leaf = document.createElement('div');
+                leaf.classList.add('leaf');
+
+                // Random horizontal position
+                leaf.style.left = Math.random() * 100 + 'vw';
+
+                // Avoid spawning leaves near the center (where the box is)
+                const randomTop = Math.random();
+                if (randomTop < 0.5) {
+                    leaf.style.top = Math.random() * 30 + 'vh'; // Top 30%
+                } else {
+                    leaf.style.top = (70 + Math.random() * 30) + 'vh'; // Bottom 30%
+                }
+
+                const duration = Math.random() * 15 + 8;
+                const delay = Math.random() * 15;
+                leaf.style.animationDuration = `${duration}s, ${duration / 2}s`;
+                leaf.style.animationDelay = `${delay}s, ${delay}s`;
+                leaf.style.animationTimingFunction = `linear, ease-in-out`;
+
+                const size = Math.random() * 10 + 15;
+                leaf.style.width = `${size}px`;
+                leaf.style.height = `${size}px`;
+
+                leaf.style.borderRadius = Math.random() > 0.5 ? '0 50%' : '50% 0';
+
+                leafContainer.appendChild(leaf);
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
